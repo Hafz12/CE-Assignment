@@ -125,3 +125,16 @@ plt.ylabel("Total Fare (Minimize)")
 plt.title("Pareto Front — MOACO (Distance vs Fare)")
 plt.grid(True)
 plt.show()
+
+import joblib
+
+# ===============================
+# 9. Save results for Streamlit
+# ===============================
+pareto = [(a[0][0], a[0][1]) for a in archive]
+
+joblib.dump(pareto, "aco_pareto.pkl")
+joblib.dump(len(archive), "aco_convergence.pkl")
+joblib.dump(end_time - start_time, "aco_runtime.pkl")
+
+print("ACO results saved as .pkl files")
